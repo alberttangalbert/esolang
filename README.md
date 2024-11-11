@@ -3,7 +3,7 @@
 A simple esolang for experimenting with different syntax and semantics of programming languages.
 
 Level4 tests: add "if" and "while" functions and override "for" and "range" functions
-
+```
 Trying:
     interpreter = Interpreter()
 Expecting nothing
@@ -77,3 +77,4 @@ ok
 9 tests in 13 items.
 9 passed and 0 failed.
 Test passed.
+```
