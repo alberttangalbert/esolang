@@ -32,9 +32,14 @@ class Interpreter(esolang.level1_statements.Interpreter):
     def forloop(self, tree):
         varname = tree.children[0].value
         xs = self.visit(tree.children[1])
-        self.stack.append({})
+
+        # Execute the loop, modifying the outer scope variable `a`
         for x in xs:
-            self.stack[-1][varname] = x
+            self._assign_to_stack(varname, x)  # Assign loop variable in outer scope
             result = self.visit(tree.children[2])
-        self.stack.pop()
+        
+        # Remove loop variable after the loop finishes
+        if varname in self.stack[-1]:
+            del self.stack[-1][varname]
+        
         return result
